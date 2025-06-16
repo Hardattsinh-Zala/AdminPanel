@@ -1,0 +1,50 @@
+import { useEffect, useState } from "react";
+import { createContext, useContext } from "react";
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({children}) => {
+    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [data, setData] = useState("");
+    const tokenBearer = "Bearer "+token;
+    const URL = "http://localhost:3000";
+
+    let isLogged = !!token;
+
+    const logoutUser = () => {
+        setToken("");
+        setData("");
+        return localStorage.removeItem("token");
+    }
+
+    const userAuthenticate = async () => {
+        const response = await fetch(`${URL}/api/auth/user`, {
+            method: "GET",
+            headers: {
+                Authorization: tokenBearer
+            }
+        });
+
+        if(response.ok) {
+            const res = await response.json();
+            setData(res.userData);
+        }
+    }
+
+    useEffect(() => {
+        userAuthenticate();
+    }, []);
+
+    const storeToken = (token) => {
+        setToken(token);
+        return localStorage.setItem('token', token);
+    }
+
+    return <AuthContext.Provider value={{logoutUser, storeToken, isLogged, data, tokenBearer, URL}}>
+        {children}
+    </AuthContext.Provider>
+}
+
+export const useAuth = () => {
+    return useContext(AuthContext);
+}
