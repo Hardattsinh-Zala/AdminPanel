@@ -10,7 +10,7 @@ export function Login() {
         password: ""
     });
 
-    const {storeToken, URL} = useAuth();
+    const {storeToken, checkAdmin, URL} = useAuth();
 
     const handleInput = (e) => {
         let name = e.target.name;
@@ -51,6 +51,8 @@ export function Login() {
                     theme: "dark",
                 });
                 storeToken(res_data.token);
+                checkAdmin(res_data.isAdmin);
+
             }else {
                 toast.error(res_data.msg, {
                     position: "bottom-right",

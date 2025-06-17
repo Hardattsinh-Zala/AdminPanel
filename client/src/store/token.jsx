@@ -4,6 +4,7 @@ import { createContext, useContext } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
+    const [isAdmin, setIsAdmin] = useState(false);
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [data, setData] = useState("");
     const tokenBearer = "Bearer "+token;
@@ -40,7 +41,12 @@ export const AuthProvider = ({children}) => {
         return localStorage.setItem('token', token);
     }
 
-    return <AuthContext.Provider value={{logoutUser, storeToken, isLogged, data, tokenBearer, URL}}>
+    const checkAdmin = (isAdmin) => {
+        setIsAdmin(isAdmin);
+        return localStorage.setItem('isAdmin', isAdmin);
+    }
+
+    return <AuthContext.Provider value={{logoutUser, storeToken, checkAdmin, isLogged, data, tokenBearer, URL}}>
         {children}
     </AuthContext.Provider>
 }

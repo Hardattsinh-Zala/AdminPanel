@@ -19,7 +19,7 @@ const register = async (req, res, next) => {
             res.status(400).json({ msg: "User already exists." });
         } else {
             const userCreated = await User.create({ username, email, phone, password });
-            res.status(201).json({ msg: "User created successfully.", token: await userCreated.generateToken(), userId: userCreated._id.toString() });
+            res.status(201).json({ msg: "User created successfully.", token: await userCreated.generateToken(), isAdmin: await userCreated._id.toString() });
         }
 
     } catch (error) {
@@ -35,7 +35,7 @@ const login = async (req, res, next) => {
         if(userExist) {
             const validPass = await userExist.comparePass(password);
             if(validPass) {
-                res.status(201).json({ msg: "User logined successfully.", token: await userExist.generateToken(), userId: userExist._id.toString() });
+                res.status(201).json({ msg: "User logined successfully.", token: await userExist.generateToken(), isAdmin: await userExist._id.toString() });
             }else {
                 res.status(401).json({msg: "Incorrect email or password."});
             }
