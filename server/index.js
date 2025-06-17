@@ -9,7 +9,7 @@ const app = express();
 const cors = require("cors");
 
 const corsOption =  {
-    origin: "http://localhost:5173",
+    origin: "https://ghostpanel.onrender.com",
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true
 }
