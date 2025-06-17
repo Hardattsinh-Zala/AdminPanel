@@ -239,6 +239,9 @@ input:focus {
     height: fit-content;
   }
   /*contact page*/
+  .register-container {
+    flex-direction: column;
+  }
   .register-image {
     width: 100%;
     height: max-content;

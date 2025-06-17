@@ -1,9 +1,15 @@
 import { NavLink, Outlet } from "react-router";
+import { Navigate } from "react-router";
 import { useState } from "react";
 import "./Admin.css";
 
 export function Admin() {
     const [toggle, setToggle] = useState(false);
+    const isAdmin = localStorage.getItem('isAdmin');
+
+    if(!isAdmin) {
+        return <Navigate to={'/'} replace/>
+    }
 
     return <>
         <section>
