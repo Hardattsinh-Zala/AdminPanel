@@ -1,10 +1,11 @@
 import { useState } from "react";
 import {useNavigate} from "react-router";
 import { useAuth } from "../store/token";
+import {toast} from "react-toastify"
 
 export function Register() {
     const navigate = useNavigate();
-    const URL = useAuth();
+    const {URL} = useAuth();
     const [user, setUser] = useState({
         username: "",
         email: "",
@@ -32,10 +33,13 @@ export function Register() {
                 },
                 body: JSON.stringify(user)
             });
-            console.log(response);
+            const data = await response.json();
 
             if(response.ok) {
                 navigate("/login");
+                toast.success(data.msg);
+            }else {
+                toast.error(data.msg);
             }
         } catch (error) {
             console.log(error);
