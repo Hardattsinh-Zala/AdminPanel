@@ -7,7 +7,7 @@ export const AuthProvider = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [data, setData] = useState("");
     const tokenBearer = "Bearer "+token;
-    const URL = "http://localhost:3000";
+    const URL = "https://adminpanel-backend-y8yv.onrender.com";
 
     let isLogged = !!token;
 
