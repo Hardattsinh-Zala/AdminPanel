@@ -16,7 +16,7 @@ export function Footer() {
             modern DevOps practices, we deliver digital products <br />
             that are not only functional but future-ready. <br />
           </p>
-          <a onClick={() => navigate('/')}>Explore our expertise</a>
+          <a onClick={() => navigate('/ajdbvak')}>Visit Page 404</a>
         </div>
         <div className="strategy">
           <h4>Creative Design + Strategy</h4><hr/>

@@ -74,9 +74,9 @@ button:hover {
 
 /* registeration page */
 .register-container {
-  display: grid;
+  display: flex;
   padding-top: 7rem;
-  gap: 4rem;
+  justify-content: space-around;
 }
 
 .register-image {
@@ -183,8 +183,25 @@ input:focus {
   font-size: x-large;
   font-weight: 600;
 }
+/*Error page*/
+.error-image {
+  display: flex;
+  background-color: rgb(236, 60, 60);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+.error-image img{
+  height: 50%;
+}
 
 @media(max-width: 400px) {
+  .error-image img{
+    height: 30%;
+  }
   .home-hero {
     height: 80vh;
     justify-content: center;

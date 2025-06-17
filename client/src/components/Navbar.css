@@ -41,7 +41,7 @@
     /* background-color: #9321f1; */
     background-color: #1a0025;
     overflow: hidden;
-    display: flex;
+    display: none;
     padding: 2rem;
     justify-content: end;
     flex-direction: column;
@@ -50,6 +50,10 @@
 
 .slideDownMenu {
     animation: slideDown 1s ease forwards;
+}
+
+.menu-links-inactive {
+    display: none !important;
 }
 
 @keyframes slideDown {
@@ -90,5 +94,8 @@
         display: inline-block;
         cursor: pointer;
         z-index: 20;
+    }
+    .menu-links {
+        display: flex;
     }
 }

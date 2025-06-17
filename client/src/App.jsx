@@ -14,6 +14,7 @@ import { EditUser } from "./components/layouts/EditUser";
 import { EditContact } from "./components/layouts/EditContact";
 import { ToastContainer } from "react-toastify";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { Error } from "./pages/Error";
 import './App.css'
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route path="/admin/contact/edit/:id" element={<EditContact/>} />
             </Route>
           </Route>
+          <Route path="*" element={<Error/>} />
         </Routes>
         <Footer/>
         <ToastContainer
